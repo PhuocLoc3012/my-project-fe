@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# This project will build about shopping online
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is just for practicing React js
 
 ## Available Scripts
 
