@@ -5,18 +5,23 @@
   "dependencies": {
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
+    "@hookform/resolvers": "^3.9.1",
     "@mui/icons-material": "^6.1.8",
     "@mui/material": "^6.1.8",
+    "@mui/styles": "^6.1.10",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook": "^0.0.1",
+    "react-hook-form": "^7.54.0",
     "react-hooks": "^1.0.1",
     "react-router-dom": "^7.0.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.5.0",
+    "zod": "^3.23.8"
   },
   "scripts": {
     "start": "react-scripts start",
