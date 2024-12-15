@@ -9,25 +9,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Avatar, Button, Typography } from "@mui/material";
 //import using jsconfig
-import { makeStyles } from "@mui/styles";
-import { Email } from "@mui/icons-material";
+
 import InputField from "components/form-controls/InputField/index";
 import PasswordField from "components/form-controls/PasswordField/index";
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-  avatar: {
-    margin: "0 auto",
-  },
-  title: {
-    textAlign: "center",
-    margin: "2 0 3 0",
-  },
-  submit: {
-    margin: "4 0 2 0",
-  },
-}));
+
 
 // rfsp
 RegisterForm.propTypes = {
@@ -35,7 +22,7 @@ RegisterForm.propTypes = {
 };
 
 function RegisterForm(props) {
-  const classes = useStyles();
+  
 
   //valiation
   const schema = z
@@ -87,10 +74,10 @@ function RegisterForm(props) {
     });
   };
   return (
-    <div className={classes.root}>
+    <div >
       {/* //form có sẵn hàm form.handleSubmit //mình cần truyền hàm mình vào */}
-      <Avatar className={classes.avatar}></Avatar>
-      <Typography className={classes.title}>Create An Account</Typography>
+      <Avatar ></Avatar>
+      <Typography >Create An Account</Typography>
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <InputField form={form} name="username" label="User name" />
         <InputField form={form} name="firstName" label="First Name" />
@@ -104,7 +91,7 @@ function RegisterForm(props) {
         />
         <Button
           type="submit"
-          className={classes.submit}
+         
           variant="contained"
           color="primary"
           fullWidth
