@@ -1,4 +1,5 @@
 import axios from "axios";
+import { store } from "state/store";
 
 const axiosClient =  axios.create({
     baseURL: 'https://localhost:7160/api/', 
@@ -12,6 +13,13 @@ const axiosClient =  axios.create({
 // Add a request interceptor
 axiosClient.interceptors.request.use(function (config) {
     // Do something before request is sent
+    
+    //Interceptors requests to add Authorization header
+    const token = store.getState().auth.accessToken;
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    
     return config;
   }, function (error) {
     // Do something with request error
