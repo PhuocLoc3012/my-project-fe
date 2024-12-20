@@ -9,8 +9,9 @@ function App() {
   const router  =  createBrowserRouter([
     {
       element: <Layout/>,
+      children: routes, //render theo outlet
       errorElement: <Page404/>,
-      children: routes
+
     }
   ])
 

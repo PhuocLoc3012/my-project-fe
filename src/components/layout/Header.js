@@ -17,6 +17,8 @@ import { Dialog, DialogContent, DialogContentText, DialogActions } from '@mui/ma
 import PathConstants from "../../routes/pathConstants";  // Import PathConstants
 import Register from '../../pages/Auth/components/Register';
 import { useState } from 'react';
+import Login from 'pages/Auth/components/Login/index';
+
 // Replace with the pages you want: Home and About
 const pages = [
   { label: 'Home', path: PathConstants.HOME },
@@ -30,14 +32,17 @@ const pages = [
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+  const [modalType, setModalType] = useState('')
   const [open, setOpen] = useState(false)
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (modalType) => {
+    setModalType(modalType);
     setOpen(true);
   };
   
   const handleClose = () => {
     setOpen(false);
+  //  setModalType(''); // Reset modal type
   };
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -131,10 +136,10 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex'} }}>
             <Typography >
-                <Button  sx={{ my: 2, color: 'white', display: 'block' }}>Login</Button>
+                <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => handleClickOpen('login')}>Login</Button>
             </Typography>
             <Typography>
-                <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleClickOpen}>Register</Button>
+                <Button  sx={{ my: 2, color: 'white', display: 'block' }} onClick={() => handleClickOpen('register')}>Register</Button>
             </Typography>
           </Box>
 
@@ -182,10 +187,10 @@ function ResponsiveAppBar() {
         >
           {/* <DialogTitle>Subscribe</DialogTitle> */}
           <DialogContent>
-            <DialogContentText>
-              <Register/>
-            </DialogContentText>
-          </DialogContent>
+          <DialogContentText>
+                {modalType === 'login' ? <Login /> : <Register />}
+              </DialogContentText>
+            </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
           </DialogActions>

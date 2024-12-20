@@ -11,8 +11,8 @@ InputField.propTypes = {
 };
 //những inputField này sẽ làm việc với ui control để render ra dữ liệu tương ứng
 function InputField(props) {
-  const { form, name, label, disabled } = props;
-  //lay cac prop ra
+  const { form, name, label, disabled } = props;  //lay cac prop ra
+
 
   //lay thong tin error
   const {formState } = form;
@@ -23,7 +23,7 @@ function InputField(props) {
   return (
     <Controller //để tự động binding
         name = {name} //định nghĩa name của controller
-        control = {form.control} //cần truyền control được lấy từ form.control
+        control = {form.control} //được sử dụng để kết nối các input field với form state.
        //2 cái trên bắt buộc phải có
 
         render={({ field }) => (
@@ -35,10 +35,7 @@ function InputField(props) {
               label={label}
               disabled={disabled}  
               error={hasError}
-              helperText={errors[name]?.message}
-              
-
-
+              helperText={errors[name]?.message}        
             />
           )}
 
