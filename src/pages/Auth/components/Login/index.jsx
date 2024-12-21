@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoginForm from '../LoginForm/index';
+import { authApi } from 'api/auth';
+import { useDispatch } from 'react-redux';
+import { userLogin } from 'state/Auth/authSlice';
+
 
 Login.propTypes = {
     
@@ -8,10 +12,20 @@ Login.propTypes = {
 
 function Login(props) {
 
-
-    const handleSubmit = (value) => {
-        console.log(value);
-        
+    const dispatch = useDispatch()
+    const handleSubmit = async (value) => {
+        try {
+            console.log(value);
+            const resultAction = await dispatch(userLogin(value))
+            if (resultAction.payload.isAuthSuccessful){
+                console.log('10 cay sen da');
+                
+            }
+            
+            
+        } catch (error) {
+            console.error('Error while logging in:', error);
+        }
     }
 
 

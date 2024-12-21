@@ -1,9 +1,10 @@
-import axiosClient from "./axiosInstance";
+import axiosClient from "api/axiosInstance";
+
 
  const authApi = {
-    login: async (data) => {
-        const response = await axiosClient.post('/auth/authenticate', data);
-        return response.data;
+    login: async (username, password) => {
+        const response = await axiosClient.post('/auth/authenticate', { username, password });
+        return response;
     }
 }
 

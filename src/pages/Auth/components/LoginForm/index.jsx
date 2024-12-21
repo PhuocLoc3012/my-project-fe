@@ -6,11 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import PasswordField from "components/form-controls/PasswordField/index";
 import { Button } from "../../../../../node_modules/@mui/material/index";
+import { useSelector } from "react-redux";
 LoginForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
 function LoginForm(props) {
+
+  const {loading, error} = useSelector((state) => state.auth)
+
   const schema = z.object({
     username: z.string().min(1, "Username is required"),
     password: z.string().min(1, "Password is required"),
@@ -35,8 +39,9 @@ function LoginForm(props) {
         <InputField form={form} name="username" label="Username" />
         <PasswordField form={form} name="password" label="Password" />
         <Button type="submit" variant="contained" color="primary" fullWidth>
-          Sign in
+          {loading? 'Loading...' : 'Sign in'}
         </Button>
+        
       </form>
     </div>
   );
